@@ -30,13 +30,14 @@ const AppError_1 = require("../../errors/AppError");
 const userToken_1 = require("../../utils/userToken");
 const setCookie_1 = require("../../utils/setCookie");
 const sendResponse_1 = require("../../utils/sendResponse");
+const config_1 = __importDefault(require("../../config"));
 const credentialLogin = (0, catchAsync_1.catchAsync)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     passport_1.default.authenticate("local", (err, user, info) => __awaiter(void 0, void 0, void 0, function* () {
         if (err) {
             return next(new AppError_1.AppError(401, `Error:-${err}`));
         }
         if (!user) {
-            return next(new AppError_1.AppError(401, `User for Found`));
+            return next(new AppError_1.AppError(401, info.message));
         }
         const userToken = yield (0, userToken_1.createUserToken)(user);
         const _a = user.toObject(), { password: pass } = _a, rest = __rest(_a, ["password"]);
@@ -52,6 +53,15 @@ const credentialLogin = (0, catchAsync_1.catchAsync)((req, res, next) => __await
             },
         });
     }))(req, res, next);
+}));
+const googleCallback = (0, catchAsync_1.catchAsync)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const user = req === null || req === void 0 ? void 0 : req.user;
+    if (!user) {
+        throw new AppError_1.AppError(401, "User Not Found");
+    }
+    const userToken = yield (0, userToken_1.createUserToken)(user);
+    (0, setCookie_1.setCookie)(res, userToken);
+    res.redirect(`${config_1.default.FRONTEND_URL}`);
 }));
 const logout = (0, catchAsync_1.catchAsync)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     res.clearCookie("accessToken", {
@@ -71,4 +81,4 @@ const logout = (0, catchAsync_1.catchAsync)((req, res, next) => __awaiter(void 0
         data: "",
     });
 }));
-exports.authController = { credentialLogin, logout };
+exports.authController = { credentialLogin, logout, googleCallback };
