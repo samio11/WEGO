@@ -10,11 +10,16 @@ const globalErrorHandler_1 = require("./app/middlewares/globalErrorHandler");
 const notFound_1 = require("./app/middlewares/notFound");
 const routes_1 = require("./app/routes");
 require("./app/config/passport");
+const config_1 = __importDefault(require("./app/config"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
-app.use((0, cors_1.default)());
 app.use((0, cookie_parser_1.default)());
 app.use("/api/v1", routes_1.rootRouter);
+app.set("trust proxy", 1);
+app.use((0, cors_1.default)({
+    origin: config_1.default.FRONTEND_URL,
+    credentials: true,
+}));
 app.get("/", (req, res) => {
     res.status(200).json({ message: "Server is running successful" });
 });
