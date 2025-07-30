@@ -4,6 +4,7 @@ import { AppError } from "../../errors/AppError";
 import { createUserToken } from "../../utils/userToken";
 import { setCookie } from "../../utils/setCookie";
 import { sendResponse } from "../../utils/sendResponse";
+import config from "../../config";
 
 const credentialLogin = catchAsync(async (req, res, next) => {
   passport.authenticate("local", async (err: any, user: any, info: any) => {
@@ -11,7 +12,7 @@ const credentialLogin = catchAsync(async (req, res, next) => {
       return next(new AppError(401, `Error:-${err}`));
     }
     if (!user) {
-      return next(new AppError(401, `User for Found`));
+      return next(new AppError(401, info.message));
     }
     const userToken = await createUserToken(user);
     const { password: pass, ...rest } = user.toObject();
@@ -27,6 +28,16 @@ const credentialLogin = catchAsync(async (req, res, next) => {
       },
     });
   })(req, res, next);
+});
+
+const googleCallback = catchAsync(async (req, res, next) => {
+  const user = req?.user;
+  if (!user) {
+    throw new AppError(401, "User Not Found");
+  }
+  const userToken = await createUserToken(user);
+  setCookie(res, userToken);
+  res.redirect(`${config.FRONTEND_URL}`);
 });
 
 const logout = catchAsync(async (req, res, next) => {
@@ -48,4 +59,4 @@ const logout = catchAsync(async (req, res, next) => {
   });
 });
 
-export const authController = { credentialLogin, logout };
+export const authController = { credentialLogin, logout, googleCallback };
