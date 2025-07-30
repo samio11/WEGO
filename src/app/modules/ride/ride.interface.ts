@@ -16,7 +16,7 @@ export type TStatusHistory = {
 };
 export type TRide = {
   riderId: Types.ObjectId;
-  driverId: Types.ObjectId;
+  driverId?: Types.ObjectId;
   pickupLocation: TLocation;
   destinationLocation: TLocation;
   status: ERideStatus;

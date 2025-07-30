@@ -4,6 +4,7 @@ exports.rootRouter = void 0;
 const express_1 = require("express");
 const user_routes_1 = require("../modules/user/user.routes");
 const auth_routes_1 = require("../modules/auth/auth.routes");
+const ride_routes_1 = require("../modules/ride/ride.routes");
 exports.rootRouter = (0, express_1.Router)();
 const moduleRoutes = [
     {
@@ -13,6 +14,10 @@ const moduleRoutes = [
     {
         path: "/auth",
         element: auth_routes_1.authRoutes,
+    },
+    {
+        path: "/ride",
+        element: ride_routes_1.rideRoutes,
     },
 ];
 moduleRoutes.forEach((x) => exports.rootRouter.use(x.path, x.element));

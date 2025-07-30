@@ -16,7 +16,7 @@ export type TVehicleInfo = {
   licensePlate: string;
 };
 export type TLocation = {
-  lat: Number;
+  lat: number;
   lng: number;
 };
 export type TDriver = {
