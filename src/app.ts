@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import { globalErrorHandler } from "./app/middlewares/globalErrorHandler";
 import { notFound } from "./app/middlewares/notFound";
 import { rootRouter } from "./app/routes";
+import "./app/config/passport";
 const app: Application = express();
 app.use(express.json());
 app.use(cors());

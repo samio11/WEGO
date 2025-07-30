@@ -9,6 +9,7 @@ const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const globalErrorHandler_1 = require("./app/middlewares/globalErrorHandler");
 const notFound_1 = require("./app/middlewares/notFound");
 const routes_1 = require("./app/routes");
+require("./app/config/passport");
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use((0, cors_1.default)());
