@@ -36,7 +36,9 @@ export class QueryBuilder<T> {
   }
 
   fields(): this {
-    const fields = this.query.fields.split(",").join(" ") || "";
+    const fields = this.query.fields
+      ? this.query.fields.split(",").join(" ")
+      : "";
     this.modelQuery = this.modelQuery.select(fields);
     return this;
   }

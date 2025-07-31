@@ -6,6 +6,7 @@ import { rideController } from "./ride.controller";
 const router = Router();
 
 router.post("/create-ride", checkAuth(ERole.RIDER), rideController.createRide);
+router.get("/view-ride", checkAuth(ERole.RIDER), rideController.viewRides);
 router.post(
   "/cancel-ride/:rideId",
   checkAuth(ERole.RIDER),

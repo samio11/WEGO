@@ -1,4 +1,5 @@
 import { AppError } from "../../errors/AppError";
+import { QueryBuilder } from "../../utils/QueryBuilder";
 import { Rider } from "../rider/rider.model";
 import { ERideStatus, TRide } from "./ride.interface";
 import { Ride } from "./ride.model";
@@ -82,4 +83,21 @@ const cancelRide = async (payload: string, riderId: string) => {
   }
 };
 
-export const rideServices = { createRide, cancelRide };
+const viewRides = async (riderId: string, query: Record<string, string>) => {
+  const existRider = await Rider.findOne({ userId: riderId });
+  if (!existRider) {
+    throw new AppError(401, "This Rider is not exists");
+  }
+  const queryBuilder = new QueryBuilder(Ride.find({ riderId }), query)
+    .filter()
+    .sort()
+    .fields()
+    .paginate();
+  const result = await queryBuilder
+    .build()
+    .populate("riderId", "name email profileImage")
+    .populate("driverId", "name email profileImage");
+  return result;
+};
+
+export const rideServices = { createRide, cancelRide, viewRides };

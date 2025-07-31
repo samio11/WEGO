@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.rideServices = void 0;
 const AppError_1 = require("../../errors/AppError");
+const QueryBuilder_1 = require("../../utils/QueryBuilder");
 const rider_model_1 = require("../rider/rider.model");
 const ride_interface_1 = require("./ride.interface");
 const ride_model_1 = require("./ride.model");
@@ -75,4 +76,20 @@ const cancelRide = (payload, riderId) => __awaiter(void 0, void 0, void 0, funct
         throw err;
     }
 });
-exports.rideServices = { createRide, cancelRide };
+const viewRides = (riderId, query) => __awaiter(void 0, void 0, void 0, function* () {
+    const existRider = yield rider_model_1.Rider.findOne({ userId: riderId });
+    if (!existRider) {
+        throw new AppError_1.AppError(401, "This Rider is not exists");
+    }
+    const queryBuilder = new QueryBuilder_1.QueryBuilder(ride_model_1.Ride.find({ riderId }), query)
+        .filter()
+        .sort()
+        .fields()
+        .paginate();
+    const result = yield queryBuilder
+        .build()
+        .populate("riderId", "name email profileImage")
+        .populate("driverId", "name email profileImage");
+    return result;
+});
+exports.rideServices = { createRide, cancelRide, viewRides };
