@@ -85,10 +85,47 @@ const completed_ride = catchAsync(async (req, res, next) => {
     data: result,
   });
 });
+const viewEarning = catchAsync(async (req, res, next) => {
+  const accessToken = req?.headers?.authorization;
+  const verifyTokenInfo = validateToken(
+    accessToken as string,
+    config.JWT_ACCESS_TOKEN as string
+  ) as JwtPayload;
+
+  const driverId = verifyTokenInfo.userId;
+
+  const result = await driverServices.viewEarning(driverId);
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: "Getting Driver Earning",
+    data: result,
+  });
+});
+const updateAvailable = catchAsync(async (req, res, next) => {
+  const accessToken = req?.headers?.authorization;
+  const verifyTokenInfo = validateToken(
+    accessToken as string,
+    config.JWT_ACCESS_TOKEN as string
+  ) as JwtPayload;
+
+  const driverId = verifyTokenInfo.userId;
+  const payload = req.body.isAvailable;
+
+  const result = await driverServices.updateAvailable(driverId, payload);
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: "Driver Available Updated!!!",
+    data: result,
+  });
+});
 
 export const driverControllers = {
   acceptRide,
   picked_upRide,
   in_transit_ride,
   completed_ride,
+  viewEarning,
+  updateAvailable,
 };

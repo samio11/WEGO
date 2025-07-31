@@ -25,5 +25,15 @@ router.post(
   checkAuth(ERole.DRIVER),
   driverControllers.completed_ride
 );
+router.get(
+  "/view-earning",
+  checkAuth(ERole.DRIVER),
+  driverControllers.viewEarning
+);
+router.patch(
+  "/update-available",
+  checkAuth(ERole.DRIVER),
+  driverControllers.updateAvailable
+);
 
 export const driverRoutes = router;

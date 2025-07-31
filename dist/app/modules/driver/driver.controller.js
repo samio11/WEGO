@@ -90,9 +90,38 @@ const completed_ride = (0, catchAsync_1.catchAsync)((req, res, next) => __awaite
         data: result,
     });
 }));
+const viewEarning = (0, catchAsync_1.catchAsync)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
+    const accessToken = (_a = req === null || req === void 0 ? void 0 : req.headers) === null || _a === void 0 ? void 0 : _a.authorization;
+    const verifyTokenInfo = (0, jwt_1.validateToken)(accessToken, config_1.default.JWT_ACCESS_TOKEN);
+    const driverId = verifyTokenInfo.userId;
+    const result = yield driver_services_1.driverServices.viewEarning(driverId);
+    (0, sendResponse_1.sendResponse)(res, {
+        statusCode: 200,
+        success: true,
+        message: "Getting Driver Earning",
+        data: result,
+    });
+}));
+const updateAvailable = (0, catchAsync_1.catchAsync)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
+    const accessToken = (_a = req === null || req === void 0 ? void 0 : req.headers) === null || _a === void 0 ? void 0 : _a.authorization;
+    const verifyTokenInfo = (0, jwt_1.validateToken)(accessToken, config_1.default.JWT_ACCESS_TOKEN);
+    const driverId = verifyTokenInfo.userId;
+    const payload = req.body.isAvailable;
+    const result = yield driver_services_1.driverServices.updateAvailable(driverId, payload);
+    (0, sendResponse_1.sendResponse)(res, {
+        statusCode: 200,
+        success: true,
+        message: "Driver Available Updated!!!",
+        data: result,
+    });
+}));
 exports.driverControllers = {
     acceptRide,
     picked_upRide,
     in_transit_ride,
     completed_ride,
+    viewEarning,
+    updateAvailable,
 };

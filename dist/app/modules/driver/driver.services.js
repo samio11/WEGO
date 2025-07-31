@@ -118,9 +118,22 @@ const completeRide = (payload) => __awaiter(void 0, void 0, void 0, function* ()
         throw err;
     }
 });
+const viewEarning = (payload) => __awaiter(void 0, void 0, void 0, function* () {
+    const existUser = yield driver_model_1.Driver.findOne({ userId: payload }).select("earning");
+    if (!existUser) {
+        throw new AppError_1.AppError(404, "User Not Found!!!");
+    }
+    return existUser;
+});
+const updateAvailable = (driverId, payload) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield driver_model_1.Driver.findOneAndUpdate({ userId: driverId }, { payload }, { new: true });
+    return result;
+});
 exports.driverServices = {
     acceptRide,
     pickedUpRide,
     inTransmitRide,
     completeRide,
+    viewEarning,
+    updateAvailable,
 };

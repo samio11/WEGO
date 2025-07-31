@@ -2,7 +2,7 @@ import { AppError } from "../../errors/AppError";
 import { ERideStatus } from "../ride/ride.interface";
 import { Ride } from "../ride/ride.model";
 import { User } from "../user/user.model";
-import { TAcceptRide } from "./driver.interface";
+import { EAvailable, TAcceptRide } from "./driver.interface";
 import { Driver } from "./driver.model";
 
 const acceptRide = async (payload: TAcceptRide) => {
@@ -134,9 +134,31 @@ const completeRide = async (payload: TAcceptRide) => {
   }
 };
 
+const viewEarning = async (payload: string) => {
+  const existUser = await Driver.findOne({ userId: payload }).select("earning");
+  if (!existUser) {
+    throw new AppError(404, "User Not Found!!!");
+  }
+  return existUser;
+};
+
+const updateAvailable = async (
+  driverId: string,
+  payload: { isAvailable: EAvailable }
+) => {
+  const result = await Driver.findOneAndUpdate(
+    { userId: driverId },
+    { payload },
+    { new: true }
+  );
+  return result;
+};
+
 export const driverServices = {
   acceptRide,
   pickedUpRide,
   inTransmitRide,
   completeRide,
+  viewEarning,
+  updateAvailable,
 };

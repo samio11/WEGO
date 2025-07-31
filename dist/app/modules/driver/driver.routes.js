@@ -10,4 +10,6 @@ router.post("/accept-ride", (0, checkAuth_1.checkAuth)(user_interfaces_1.ERole.D
 router.post("/pickedUp-ride", (0, checkAuth_1.checkAuth)(user_interfaces_1.ERole.DRIVER), driver_controller_1.driverControllers.picked_upRide);
 router.post("/inTransmit-ride", (0, checkAuth_1.checkAuth)(user_interfaces_1.ERole.DRIVER), driver_controller_1.driverControllers.in_transit_ride);
 router.post("/complete-ride", (0, checkAuth_1.checkAuth)(user_interfaces_1.ERole.DRIVER), driver_controller_1.driverControllers.completed_ride);
+router.get("/view-earning", (0, checkAuth_1.checkAuth)(user_interfaces_1.ERole.DRIVER), driver_controller_1.driverControllers.viewEarning);
+router.patch("/update-available", (0, checkAuth_1.checkAuth)(user_interfaces_1.ERole.DRIVER), driver_controller_1.driverControllers.updateAvailable);
 exports.driverRoutes = router;

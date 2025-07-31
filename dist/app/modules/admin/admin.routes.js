@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.adminRoutes = void 0;
+const express_1 = require("express");
+const checkAuth_1 = require("../../middlewares/checkAuth");
+const user_interfaces_1 = require("../user/user.interfaces");
+const admin_controller_1 = require("./admin.controller");
+const router = (0, express_1.Router)();
+router.get("/view-all", (0, checkAuth_1.checkAuth)(user_interfaces_1.ERole.ADMIN), admin_controller_1.adminController.viewAllUser);
+router.patch("/updateStatus/:driverId", (0, checkAuth_1.checkAuth)(user_interfaces_1.ERole.ADMIN), admin_controller_1.adminController.updateDriverStatus1);
+exports.adminRoutes = router;
