@@ -22,7 +22,15 @@ const createRide = (payload) => __awaiter(void 0, void 0, void 0, function* () {
         if (!existRider) {
             throw new AppError_1.AppError(404, "Rider is Not Found");
         }
-        const newRide = yield ride_model_1.Ride.create([Object.assign({}, payload)], { session });
+        const statusHistory = [
+            {
+                status: ride_interface_1.ERideStatus.requested,
+                time: Date.now(),
+            },
+        ];
+        const newRide = yield ride_model_1.Ride.create([Object.assign(Object.assign({}, payload), { statusHistory })], {
+            session,
+        });
         if (newRide) {
             yield rider_model_1.Rider.findOneAndUpdate({ userId: payload.riderId }, { $inc: { totalRides: +1 } }, { new: true, session });
         }
@@ -50,8 +58,13 @@ const cancelRide = (payload, riderId) => __awaiter(void 0, void 0, void 0, funct
         if (existRide.status === ride_interface_1.ERideStatus.requested) {
             throw new AppError_1.AppError(401, "You Cant Cancel,Please wait for Accept Approval");
         }
-        yield ride_model_1.Ride.findByIdAndUpdate(payload, { status: ride_interface_1.ERideStatus.canceled }, { new: true, session });
-        yield rider_model_1.Rider.findOneAndUpdate({ userId: existRide.riderId }, { $inc: { totalRides: -1 } }, { new: true, session });
+        const updateRide = yield ride_model_1.Ride.findByIdAndUpdate(payload, { status: ride_interface_1.ERideStatus.canceled }, { new: true, session });
+        if (updateRide) {
+            const riderUpdate = yield rider_model_1.Rider.findOneAndUpdate({ userId: riderId }, { $inc: { totalRides: -1, totalCanceled: 1 } }, { new: true, session });
+            if (!riderUpdate) {
+                throw new AppError_1.AppError(500, "Failed to update rider statistics");
+            }
+        }
         yield session.commitTransaction();
         session.endSession();
         return "";

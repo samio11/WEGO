@@ -11,7 +11,15 @@ const createRide = async (payload: TRide) => {
     if (!existRider) {
       throw new AppError(404, "Rider is Not Found");
     }
-    const newRide = await Ride.create([{ ...payload }], { session });
+    const statusHistory = [
+      {
+        status: ERideStatus.requested,
+        time: Date.now(),
+      },
+    ];
+    const newRide = await Ride.create([{ ...payload, statusHistory }], {
+      session,
+    });
     if (newRide) {
       await Rider.findOneAndUpdate(
         { userId: payload.riderId },
@@ -47,17 +55,22 @@ const cancelRide = async (payload: string, riderId: string) => {
       );
     }
 
-    await Ride.findByIdAndUpdate(
+    const updateRide = await Ride.findByIdAndUpdate(
       payload,
       { status: ERideStatus.canceled },
       { new: true, session }
     );
+    if (updateRide) {
+      const riderUpdate = await Rider.findOneAndUpdate(
+        { userId: riderId },
+        { $inc: { totalRides: -1, totalCanceled: 1 } },
+        { new: true, session }
+      );
 
-    await Rider.findOneAndUpdate(
-      { userId: existRide.riderId },
-      { $inc: { totalRides: -1 } },
-      { new: true, session }
-    );
+      if (!riderUpdate) {
+        throw new AppError(500, "Failed to update rider statistics");
+      }
+    }
 
     await session.commitTransaction();
     session.endSession();

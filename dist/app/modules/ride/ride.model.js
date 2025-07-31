@@ -17,7 +17,11 @@ function calculateDistanceKm(lat1, lon1, lat2, lon2) {
     return R * c;
 }
 const statusHistorySchema = new mongoose_1.Schema({
-    status: { type: String, enum: Object.values(ride_interface_1.ERideStatus) },
+    status: {
+        type: String,
+        enum: Object.values(ride_interface_1.ERideStatus),
+        default: ride_interface_1.ERideStatus.requested,
+    },
     time: { type: Date, default: Date.now() },
 });
 const rideSchema = new mongoose_1.Schema({

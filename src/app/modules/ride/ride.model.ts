@@ -24,7 +24,11 @@ function calculateDistanceKm(
 }
 
 const statusHistorySchema = new Schema<TStatusHistory>({
-  status: { type: String, enum: Object.values(ERideStatus) },
+  status: {
+    type: String,
+    enum: Object.values(ERideStatus),
+    default: ERideStatus.requested,
+  },
   time: { type: Date, default: Date.now() },
 });
 
