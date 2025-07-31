@@ -105,7 +105,7 @@ Follow these steps to set up and run WEGO locally.
 5. **Test APIs**:
    Import the `WEGO.postman_collection.json` into Postman to test the APIs. The collection includes endpoints for authentication, user management, ride operations, and admin tasks.
 
----
+👉 **Live Website**: [https://wego-amber.vercel.app](https://wego-amber.vercel.app)
 
 ## 📚 API Documentation
 
