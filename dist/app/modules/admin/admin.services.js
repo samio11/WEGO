@@ -33,4 +33,25 @@ const updateDriverStatus = (driverId, payload) => __awaiter(void 0, void 0, void
     const updatedDriver = yield driver_model_1.Driver.findOneAndUpdate({ userId: driverId }, { isApproved: payload }, { new: true });
     return updatedDriver;
 });
-exports.adminServices = { viewAllUser, updateDriverStatus };
+const updateUserBlocked = (userId) => __awaiter(void 0, void 0, void 0, function* () {
+    const existUser = yield user_model_1.User.findById(userId);
+    if (!existUser) {
+        throw new AppError_1.AppError(404, "User is Not Exist");
+    }
+    const newUserStatus = yield user_model_1.User.findByIdAndUpdate(userId, { isBlocked: true }, { new: true });
+    return newUserStatus;
+});
+const updateUserUnBlocked = (userId) => __awaiter(void 0, void 0, void 0, function* () {
+    const existUser = yield user_model_1.User.findById(userId);
+    if (!existUser) {
+        throw new AppError_1.AppError(404, "User is Not Exist");
+    }
+    const newUserStatus = yield user_model_1.User.findByIdAndUpdate(userId, { isBlocked: false }, { new: true });
+    return newUserStatus;
+});
+exports.adminServices = {
+    viewAllUser,
+    updateDriverStatus,
+    updateUserBlocked,
+    updateUserUnBlocked,
+};

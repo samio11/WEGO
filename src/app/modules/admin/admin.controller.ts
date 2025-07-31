@@ -25,5 +25,32 @@ const updateDriverStatus1 = catchAsync(async (req, res, next) => {
     data: result,
   });
 });
+const admin_updateUserBlocked = catchAsync(async (req, res, next) => {
+  const userId = req.params.userId;
 
-export const adminController = { viewAllUser, updateDriverStatus1 };
+  const result = await adminServices.updateUserBlocked(userId);
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: "User Is Blocked",
+    data: result,
+  });
+});
+const admin_updateUserUnBlocked = catchAsync(async (req, res, next) => {
+  const userId = req.params.userId;
+
+  const result = await adminServices.updateUserUnBlocked(userId);
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: "User Is Blocked",
+    data: result,
+  });
+});
+
+export const adminController = {
+  viewAllUser,
+  updateDriverStatus1,
+  admin_updateUserBlocked,
+  admin_updateUserUnBlocked,
+};

@@ -34,4 +34,29 @@ const updateDriverStatus1 = (0, catchAsync_1.catchAsync)((req, res, next) => __a
         data: result,
     });
 }));
-exports.adminController = { viewAllUser, updateDriverStatus1 };
+const admin_updateUserBlocked = (0, catchAsync_1.catchAsync)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const userId = req.params.userId;
+    const result = yield admin_services_1.adminServices.updateUserBlocked(userId);
+    (0, sendResponse_1.sendResponse)(res, {
+        statusCode: 200,
+        success: true,
+        message: "User Is Blocked",
+        data: result,
+    });
+}));
+const admin_updateUserUnBlocked = (0, catchAsync_1.catchAsync)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const userId = req.params.userId;
+    const result = yield admin_services_1.adminServices.updateUserUnBlocked(userId);
+    (0, sendResponse_1.sendResponse)(res, {
+        statusCode: 200,
+        success: true,
+        message: "User Is Blocked",
+        data: result,
+    });
+}));
+exports.adminController = {
+    viewAllUser,
+    updateDriverStatus1,
+    admin_updateUserBlocked,
+    admin_updateUserUnBlocked,
+};

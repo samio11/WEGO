@@ -10,5 +10,15 @@ router.patch(
   checkAuth(ERole.ADMIN),
   adminController.updateDriverStatus1
 );
+router.patch(
+  "/block-user/:userId",
+  checkAuth(ERole.ADMIN),
+  adminController.admin_updateUserBlocked
+);
+router.patch(
+  "/unBlock-user/:userId",
+  checkAuth(ERole.ADMIN),
+  adminController.admin_updateUserUnBlocked
+);
 
 export const adminRoutes = router;

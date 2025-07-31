@@ -27,5 +27,34 @@ const updateDriverStatus = async (driverId: string, payload: boolean) => {
   );
   return updatedDriver;
 };
+const updateUserBlocked = async (userId: string) => {
+  const existUser = await User.findById(userId);
+  if (!existUser) {
+    throw new AppError(404, "User is Not Exist");
+  }
+  const newUserStatus = await User.findByIdAndUpdate(
+    userId,
+    { isBlocked: true },
+    { new: true }
+  );
+  return newUserStatus;
+};
+const updateUserUnBlocked = async (userId: string) => {
+  const existUser = await User.findById(userId);
+  if (!existUser) {
+    throw new AppError(404, "User is Not Exist");
+  }
+  const newUserStatus = await User.findByIdAndUpdate(
+    userId,
+    { isBlocked: false },
+    { new: true }
+  );
+  return newUserStatus;
+};
 
-export const adminServices = { viewAllUser, updateDriverStatus };
+export const adminServices = {
+  viewAllUser,
+  updateDriverStatus,
+  updateUserBlocked,
+  updateUserUnBlocked,
+};
