@@ -1,0 +1,715 @@
+{
+	"info": {
+		"_postman_id": "c67ac24a-9c47-4ca2-8b90-0065585ac401",
+		"name": "WEGO",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39758820"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODgyNGZhN2E3NWY0ODMyNzNiMjQ0ZGEiLCJlbWFpbCI6InNhbWlvaGFzYW42QGdtYWlsLmNvbSIsInJvbGUiOiJTVVBFUl9BRE1JTiIsImlhdCI6MTc1MzQ2MTEwMCwiZXhwIjoxNzUzNTQ3NTAwfQ.uuDOBOc2td5bzvZX5v5P9_E27-Dfmu0Z4600tTdilGo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"samiohasan6@gmail.com\",\r\n    \"password\":\"Samio@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://wego-amber.vercel.app/api/v1/auth/login",
+							"protocol": "https",
+							"host": [
+								"wego-amber",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODgyNGZhN2E3NWY0ODMyNzNiMjQ0ZGEiLCJlbWFpbCI6InNhbWlvaGFzYW42QGdtYWlsLmNvbSIsInJvbGUiOiJTVVBFUl9BRE1JTiIsImlhdCI6MTc1MzQ2MTEwMCwiZXhwIjoxNzUzNTQ3NTAwfQ.uuDOBOc2td5bzvZX5v5P9_E27-Dfmu0Z4600tTdilGo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"riadkabir45@gmail.com\",\r\n    \"password\":\"Riad@123\"\r\n}"
+						},
+						"url": {
+							"raw": "https://wego-amber.vercel.app/api/v1/auth/logout",
+							"protocol": "https",
+							"host": [
+								"wego-amber",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create Rider",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODgyNGZhN2E3NWY0ODMyNzNiMjQ0ZGEiLCJlbWFpbCI6InNhbWlvaGFzYW42QGdtYWlsLmNvbSIsInJvbGUiOiJTVVBFUl9BRE1JTiIsImlhdCI6MTc1MzQ2MTEwMCwiZXhwIjoxNzUzNTQ3NTAwfQ.uuDOBOc2td5bzvZX5v5P9_E27-Dfmu0Z4600tTdilGo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\n  \"name\": \"Ashik Khan\",\n  \"email\": \"ashikkhan5@gmail.com\",\n  \"password\": \"Ashik@123\",\n  \"phone\": \"01786232387\"\n}",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/samio/Downloads/we2.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://wego-amber.vercel.app/api/v1/user/create-rider",
+							"protocol": "https",
+							"host": [
+								"wego-amber",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"create-rider"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Admin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODgyNGZhN2E3NWY0ODMyNzNiMjQ0ZGEiLCJlbWFpbCI6InNhbWlvaGFzYW42QGdtYWlsLmNvbSIsInJvbGUiOiJTVVBFUl9BRE1JTiIsImlhdCI6MTc1MzQ2MTEwMCwiZXhwIjoxNzUzNTQ3NTAwfQ.uuDOBOc2td5bzvZX5v5P9_E27-Dfmu0Z4600tTdilGo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\n  \"name\": \"Samio Hasan\",\n  \"email\": \"samiohasan6@gmail.com\",\n  \"password\": \"Samio@123\",\n  \"phone\": \"01709801305\"\n}",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/samio/Downloads/we3.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://wego-amber.vercel.app/api/v1/user/create-admin",
+							"protocol": "https",
+							"host": [
+								"wego-amber",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"create-admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Driver",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODgyNGZhN2E3NWY0ODMyNzNiMjQ0ZGEiLCJlbWFpbCI6InNhbWlvaGFzYW42QGdtYWlsLmNvbSIsInJvbGUiOiJTVVBFUl9BRE1JTiIsImlhdCI6MTc1MzQ2MTEwMCwiZXhwIjoxNzUzNTQ3NTAwfQ.uuDOBOc2td5bzvZX5v5P9_E27-Dfmu0Z4600tTdilGo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\n  \"name\": \"Nur Alam\",\n  \"email\": \"nuralam2@mail.com\",\n  \"password\": \"Nur@123\",\n  \"phone\": \"01723852385\",\n  \"vehicleInfo\": {\n    \"vehicleType\": \"Car\",\n    \"licensePlate\": \"RICK-1102\"\n  },\n  \"currentLocation\": {\n    \"lat\": 23.7276,\n    \"lng\": 90.4105\n  }\n}\n",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/samio/Downloads/we5.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://wego-amber.vercel.app/api/v1/user/create-driver",
+							"protocol": "https",
+							"host": [
+								"wego-amber",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"create-driver"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ride",
+			"item": [
+				{
+					"name": "Create Ride",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODg5ZWQzZDQyZDZkNWIyZjEzZjJjOTIiLCJlbWFpbCI6InJpYWRrYWJpcjQ1QGdtYWlsLmNvbSIsInJvbGUiOiJSSURFUiIsImlhdCI6MTc1Mzg5NjcxMSwiZXhwIjoxNzUzOTgzMTExfQ.8O_OL4E6Zhu10IErCoSUszK8Hr1VVKfU8l0gA45kN3c",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"riderId\": \"6889ed3d42d6d5b2f13f2c92\",\r\n   \"pickupLocation\": { \"lat\": 23.7638, \"lng\": 90.3886 },\r\n  \"destinationLocation\": { \"lat\": 23.7925, \"lng\": 90.4078 }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://wego-amber.vercel.app/api/v1/ride/request",
+							"protocol": "https",
+							"host": [
+								"wego-amber",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"ride",
+								"request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Ride",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODg5ZWQzZDQyZDZkNWIyZjEzZjJjOTIiLCJlbWFpbCI6InJpYWRrYWJpcjQ1QGdtYWlsLmNvbSIsInJvbGUiOiJSSURFUiIsImlhdCI6MTc1Mzg5NjcxMSwiZXhwIjoxNzUzOTgzMTExfQ.8O_OL4E6Zhu10IErCoSUszK8Hr1VVKfU8l0gA45kN3c",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/ride/cancel-ride/688a585800daf97bda12de9a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"ride",
+								"cancel-ride",
+								"688a585800daf97bda12de9a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Ride of Rider",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODg5ZWQzZDQyZDZkNWIyZjEzZjJjOTIiLCJlbWFpbCI6InJpYWRrYWJpcjQ1QGdtYWlsLmNvbSIsInJvbGUiOiJSSURFUiIsImlhdCI6MTc1MzkzNTY5OSwiZXhwIjoxNzU0MDIyMDk5fQ.xFA_S80fUS_QKlAdMkmvmBfyKQ28LPsq0YhkvQWO1mE",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://wego-amber.vercel.app/api/v1/ride/me?page=1&limit=2",
+							"protocol": "https",
+							"host": [
+								"wego-amber",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"ride",
+								"me"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Driver",
+			"item": [
+				{
+					"name": "Accept Ride",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODg5ZjU1YTgxMDgzNjhkMDZjNjdjZDgiLCJlbWFpbCI6InNhbWlyaG9zc2FpbjRAZ21haWwuY29tIiwicm9sZSI6IkRSSVZFUiIsImlhdCI6MTc1MzkzOTIwNiwiZXhwIjoxNzU0MDI1NjA2fQ.UNklNjWZ1psvsPtCJsg5gGVDMzezBl9ZZkvzxGrO3aY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rideId\":\"688add25f63dc29320ab5e89\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://wego-amber.vercel.app/api/v1/driver/accept-ride",
+							"protocol": "https",
+							"host": [
+								"wego-amber",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"driver",
+								"accept-ride"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Picked Up Ride",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODg5ZjU1YTgxMDgzNjhkMDZjNjdjZDgiLCJlbWFpbCI6InNhbWlyaG9zc2FpbjRAZ21haWwuY29tIiwicm9sZSI6IkRSSVZFUiIsImlhdCI6MTc1Mzk0NjA5NCwiZXhwIjoxNzU0MDMyNDk0fQ.aAuTO_WlfLyS5RxFs1--lKcwvlRaaUUQKDaSzkSfI6g",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rideId\":\"688add25f63dc29320ab5e89\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://wego-amber.vercel.app/api/v1/driver/pickedUp-ride",
+							"protocol": "https",
+							"host": [
+								"wego-amber",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"driver",
+								"pickedUp-ride"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "In Transmit Ride",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODg5ZjU1YTgxMDgzNjhkMDZjNjdjZDgiLCJlbWFpbCI6InNhbWlyaG9zc2FpbjRAZ21haWwuY29tIiwicm9sZSI6IkRSSVZFUiIsImlhdCI6MTc1Mzk0NjA5NCwiZXhwIjoxNzU0MDMyNDk0fQ.aAuTO_WlfLyS5RxFs1--lKcwvlRaaUUQKDaSzkSfI6g",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rideId\":\"688add25f63dc29320ab5e89\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://wego-amber.vercel.app/api/v1/driver/inTransmit-ride",
+							"protocol": "https",
+							"host": [
+								"wego-amber",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"driver",
+								"inTransmit-ride"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Complete Ride",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODg5ZjU1YTgxMDgzNjhkMDZjNjdjZDgiLCJlbWFpbCI6InNhbWlyaG9zc2FpbjRAZ21haWwuY29tIiwicm9sZSI6IkRSSVZFUiIsImlhdCI6MTc1Mzk0NjA5NCwiZXhwIjoxNzU0MDMyNDk0fQ.aAuTO_WlfLyS5RxFs1--lKcwvlRaaUUQKDaSzkSfI6g",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rideId\":\"688add25f63dc29320ab5e89\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://wego-amber.vercel.app/api/v1/driver/complete-ride",
+							"protocol": "https",
+							"host": [
+								"wego-amber",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"driver",
+								"complete-ride"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Total Earning of a driver",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODg5ZjU1YTgxMDgzNjhkMDZjNjdjZDgiLCJlbWFpbCI6InNhbWlyaG9zc2FpbjRAZ21haWwuY29tIiwicm9sZSI6IkRSSVZFUiIsImlhdCI6MTc1Mzk0NjA5NCwiZXhwIjoxNzU0MDMyNDk0fQ.aAuTO_WlfLyS5RxFs1--lKcwvlRaaUUQKDaSzkSfI6g",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rideId\":\"688add25f63dc29320ab5e89\"\r\n}"
+						},
+						"url": {
+							"raw": "https://wego-amber.vercel.app/api/v1/driver/view-earning",
+							"protocol": "https",
+							"host": [
+								"wego-amber",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"driver",
+								"view-earning"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Available",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODg5ZjU1YTgxMDgzNjhkMDZjNjdjZDgiLCJlbWFpbCI6InNhbWlyaG9zc2FpbjRAZ21haWwuY29tIiwicm9sZSI6IkRSSVZFUiIsImlhdCI6MTc1Mzk0NjA5NCwiZXhwIjoxNzU0MDMyNDk0fQ.aAuTO_WlfLyS5RxFs1--lKcwvlRaaUUQKDaSzkSfI6g",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isAvailable\": \"ONLINE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://wego-amber.vercel.app/api/v1/driver/update-available",
+							"protocol": "https",
+							"host": [
+								"wego-amber",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"driver",
+								"update-available"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "View All User",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODg5ZjFiNDA0M2U2MGZkNWY5NzYxNGYiLCJlbWFpbCI6InNhbWlvaGFzYW42QGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc1Mzk1MzYyNSwiZXhwIjoxNzU0MDQwMDI1fQ.BXEe-VoMGD5gMf_B2IpW3jsdiFrOLcx-LXxQtj9-zLc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isAvailable\": \"ONLINE\"\r\n}"
+						},
+						"url": {
+							"raw": "https://wego-amber.vercel.app/api/v1/admin/view-all?fields=name,email,role",
+							"protocol": "https",
+							"host": [
+								"wego-amber",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"view-all"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "name,email,role"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Driver Avaliable Status",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODg5ZjFiNDA0M2U2MGZkNWY5NzYxNGYiLCJlbWFpbCI6InNhbWlvaGFzYW42QGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc1Mzk1NTE1NCwiZXhwIjoxNzU0MDQxNTU0fQ.01KeiJkOKAAKCdAwYuJtnaL6i4Ih8yA8R5806A8J3NE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isApproved\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://wego-amber.vercel.app/api/v1/admin/updateStatus/6889ffd2ab2fb8317e2f27ec",
+							"protocol": "https",
+							"host": [
+								"wego-amber",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"updateStatus",
+								"6889ffd2ab2fb8317e2f27ec"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User to Blocked",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODg5ZjFiNDA0M2U2MGZkNWY5NzYxNGYiLCJlbWFpbCI6InNhbWlvaGFzYW42QGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc1Mzk1NTE1NCwiZXhwIjoxNzU0MDQxNTU0fQ.01KeiJkOKAAKCdAwYuJtnaL6i4Ih8yA8R5806A8J3NE",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://wego-amber.vercel.app/api/v1/admin/block-user/6889ffd2ab2fb8317e2f27ec",
+							"protocol": "https",
+							"host": [
+								"wego-amber",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"block-user",
+								"6889ffd2ab2fb8317e2f27ec"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User to Blocked Copy",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODg5ZjFiNDA0M2U2MGZkNWY5NzYxNGYiLCJlbWFpbCI6InNhbWlvaGFzYW42QGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc1Mzk1NTE1NCwiZXhwIjoxNzU0MDQxNTU0fQ.01KeiJkOKAAKCdAwYuJtnaL6i4Ih8yA8R5806A8J3NE",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://wego-amber.vercel.app/api/v1/admin/unBlock-user/6889ffd2ab2fb8317e2f27ec",
+							"protocol": "https",
+							"host": [
+								"wego-amber",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"unBlock-user",
+								"6889ffd2ab2fb8317e2f27ec"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
