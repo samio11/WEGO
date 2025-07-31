@@ -28,11 +28,6 @@ passport.use(
           if (!foundDriver) {
             return done(null, false, { message: "Driver is Not Exists" });
           }
-          if (foundDriver.isApproved === false) {
-            return done(null, false, {
-              message: "Please wait for Admin Approve",
-            });
-          }
         }
         const passwordMatch = await bcrypt.compare(
           password,

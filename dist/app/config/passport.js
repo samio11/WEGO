@@ -38,11 +38,6 @@ passport_1.default.use(new passport_local_1.Strategy({
             if (!foundDriver) {
                 return done(null, false, { message: "Driver is Not Exists" });
             }
-            if (foundDriver.isApproved === false) {
-                return done(null, false, {
-                    message: "Please wait for Admin Approve",
-                });
-            }
         }
         const passwordMatch = yield bcrypt_1.default.compare(password, foundUser.password);
         if (!passwordMatch) {

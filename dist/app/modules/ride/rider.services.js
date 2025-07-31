@@ -61,7 +61,7 @@ const cancelRide = (payload, riderId) => __awaiter(void 0, void 0, void 0, funct
         }
         const updateRide = yield ride_model_1.Ride.findByIdAndUpdate(payload, { status: ride_interface_1.ERideStatus.canceled }, { new: true, session });
         if (updateRide) {
-            const riderUpdate = yield rider_model_1.Rider.findOneAndUpdate({ userId: riderId }, { $inc: { totalRides: -1, totalCanceled: 1 } }, { new: true, session });
+            const riderUpdate = yield rider_model_1.Rider.findOneAndUpdate({ userId: riderId }, { $inc: { totalCanceled: 1 } }, { new: true, session });
             if (!riderUpdate) {
                 throw new AppError_1.AppError(500, "Failed to update rider statistics");
             }

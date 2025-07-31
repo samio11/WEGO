@@ -64,7 +64,7 @@ const cancelRide = async (payload: string, riderId: string) => {
     if (updateRide) {
       const riderUpdate = await Rider.findOneAndUpdate(
         { userId: riderId },
-        { $inc: { totalRides: -1, totalCanceled: 1 } },
+        { $inc: { totalCanceled: 1 } },
         { new: true, session }
       );
 

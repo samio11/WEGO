@@ -27,3 +27,8 @@ export type TDriver = {
   currentLocation?: TLocation;
   earning: number;
 };
+
+export type TAcceptRide = {
+  rideId: string;
+  driverId: string;
+};
