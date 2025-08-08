@@ -13,7 +13,7 @@ app.use("/api/v1", rootRouter);
 app.set("trust proxy", 1);
 app.use(
   cors({
-    origin: config.FRONTEND_URL as string,
+    origin: [config.FRONTEND_URL as string, "http://localhost:3000"]
     credentials: true,
   })
 );
